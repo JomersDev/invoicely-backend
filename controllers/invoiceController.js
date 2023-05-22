@@ -3,9 +3,14 @@ const mongoose = require('mongoose')
 
 // Get all invoices
 const getInvoices = async(req, res) => {
-  const invoices = await Invoice.find({})
+  try {
+    const invoices = await Invoice.find({})
+    res.status(200).json(invoices)
+  } catch (error) {
+    console.log(error)
+    res.status(400).json({error: error.message})
+  }
 
-  res.status(200).json(invoices)
 }
 
 // CREATE new invoice
