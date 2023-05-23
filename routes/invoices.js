@@ -1,5 +1,5 @@
 const express = require('express')
-const { getInvoices, createInvoice } = require('../controllers/invoiceController')
+const { getInvoices, createInvoice, deleteInvoice } = require('../controllers/invoiceController')
 
 const router = express.Router()
 
@@ -8,5 +8,8 @@ router.get('/', getInvoices)
 
 // POST new invoice
 router.post('/', createInvoice)
+
+// DELETE an invoice
+router.delete('/:id', deleteInvoice)
 
 module.exports = router
